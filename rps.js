@@ -2,7 +2,7 @@ function getPlayerSelection() {
     let playerChoice = prompt("Choose rock, paper, or scissors:");
     let playerSelection = playerChoice.toLowerCase();
     
-    /*if (playerSelection == "rock" ||
+    if (playerSelection == "rock" ||
         playerSelection == "paper" ||
         playerSelection == "scissors") {
             return playerSelection;
@@ -11,9 +11,9 @@ function getPlayerSelection() {
         let chooseAgain = getPlayerSelection()
         return chooseAgain;
     }
-}
-*/
 
+    // How the code works with a switch statement //
+    /*
    switch(playerSelection) {
         case "rock":
         case "paper":
@@ -23,8 +23,9 @@ function getPlayerSelection() {
         default:
             let chooseAgain = getPlayerSelection();
             return chooseAgain;
+    }
+    */
+}
 
-}
-}
 
 console.log(getPlayerSelection());
