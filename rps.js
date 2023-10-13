@@ -27,5 +27,11 @@ function getPlayerSelection() {
     */
 }
 
+function getComputerSelection() {
+    const RPS = ["rock", "paper", "scissors"];
+    let computerSelection = RPS[Math.floor(Math.random() * RPS.length)];
+    return computerSelection;
+}
 
 console.log(getPlayerSelection());
+console.log(getComputerSelection());
