@@ -36,26 +36,71 @@ function getComputerSelection() {
 const playerSelection = getPlayerSelection();
 const computerSelection = getComputerSelection();
 
-console.log(playerSelection);
-console.log(computerSelection);
-
-
 function playRound(playerSelection, computerSelection) {
+    console.log(playerSelection);
+    console.log(computerSelection);
     if (playerSelection == computerSelection) {
-        let tie = console.log(`${playerSelection} and ${computerSelection} are the same - TIE`);
+        let tie = `${playerSelection} and ${computerSelection} are the same - TIE`;
+        console.log(tie);
         return tie;
     }
     else if (playerSelection == "rock" && computerSelection == "scissors" ||
              playerSelection == "paper" && computerSelection == "rock" ||
              playerSelection == "scissors" && computerSelection == "paper") {
-                let playerWin = console.log(`${playerSelection} beats ${computerSelection} - WIN`);
+                let playerWin = `${playerSelection} beats ${computerSelection} - WIN`;
+                console.log(playerWin);
                 return playerWin;
     }
     else {
-        let playerLose = console.log(`${computerSelection} beats ${playerSelection} - LOSE`);
+        let playerLose = `${computerSelection} beats ${playerSelection} - LOSE`;
+        console.log(playerLose);
         return playerLose;
     }
 }
 
-let result = playRound(playerSelection, computerSelection);
-console.log(result);
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let result = playRound(playerSelection, computerSelection);
+    let winCheck = result.includes("WIN");
+    let tieCheck = result.includes("TIE");
+
+    if (winCheck == true) {
+        playerScore++;
+    }
+    else if (winCheck == false && tieCheck == false) {
+        computerScore++;
+    }
+    console.log(`Player - ${playerScore}, Computer - ${computerScore}`);
+
+    /*while (playerScore != 5 || computerScore != 5) {
+        result;
+        if (winCheck == true) {
+            playerScore++;
+        }
+        else if (winCheck == false && tieCheck == false) {
+            computerScore++;
+        }
+        else {
+            console.log("TIE");
+        }
+
+        console.log(`Player - ${playerScore}, Computer - ${computerScore}`);
+
+        if (playerScore == 5) {
+            let playerWin = "YOU WIN";
+            console.log(playerWin);
+            return playerWin;
+        }
+        else if (computerScore == 5) {
+            let playerLose = "YOU LOSE";
+            console.log(playerLose);
+            return playerLose;
+        }
+    } */
+}
+
+let playGame = game();
+console.log(playGame);
+/*let result = playRound(playerSelection, computerSelection);
+console.log(result); */
