@@ -33,9 +33,6 @@ function getComputerSelection() {
     return computerRPS;
 }
 
-const playerSelection = getPlayerSelection();
-const computerSelection = getComputerSelection();
-
 function playRound(playerSelection, computerSelection) {
     console.log(playerSelection);
     console.log(computerSelection);
@@ -61,20 +58,15 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    let result = playRound(playerSelection, computerSelection);
-    let winCheck = result.includes("WIN");
-    let tieCheck = result.includes("TIE");
-
-    if (winCheck == true) {
-        playerScore++;
-    }
-    else if (winCheck == false && tieCheck == false) {
-        computerScore++;
-    }
-    console.log(`Player - ${playerScore}, Computer - ${computerScore}`);
-
-    /*while (playerScore != 5 || computerScore != 5) {
-        result;
+    let gameCount = 0;
+    while (gameCount < 5) {
+        gameCount++;
+        console.log(gameCount);
+        let playerSelection = getPlayerSelection();
+        let computerSelection = getComputerSelection();
+        let result = playRound(playerSelection, computerSelection);
+        let winCheck = result.includes("WIN");
+        let tieCheck = result.includes("TIE");
         if (winCheck == true) {
             playerScore++;
         }
@@ -84,23 +76,18 @@ function game() {
         else {
             console.log("TIE");
         }
-
         console.log(`Player - ${playerScore}, Computer - ${computerScore}`);
-
-        if (playerScore == 5) {
-            let playerWin = "YOU WIN";
-            console.log(playerWin);
-            return playerWin;
         }
-        else if (computerScore == 5) {
-            let playerLose = "YOU LOSE";
-            console.log(playerLose);
-            return playerLose;
-        }
-    } */
+    if (playerScore > computerScore) {
+        console.log("YOU WIN");
+    }
+    else if (playerScore < computerScore) {
+        console.log("YOU LOSE");
+    }
+    else {
+        console.log("TIE");
+    }
 }
 
 let playGame = game();
 console.log(playGame);
-/*let result = playRound(playerSelection, computerSelection);
-console.log(result); */
