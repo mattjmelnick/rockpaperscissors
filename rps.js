@@ -73,9 +73,6 @@ function game() {
         else if (winCheck == false && tieCheck == false) {
             computerScore++;
         }
-        else {
-            console.log("TIE");
-        }
         console.log(`Player - ${playerScore}, Computer - ${computerScore}`);
         }
     if (playerScore > computerScore) {
