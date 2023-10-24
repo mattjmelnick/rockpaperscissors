@@ -1,31 +1,28 @@
-function getPlayerSelection() {
-    let playerChoice = prompt("Choose rock, paper, or scissors:");
-    let playerRPS = playerChoice.toLowerCase();
-    
-    if (playerRPS == "rock" ||
-        playerRPS == "paper" ||
-        playerRPS == "scissors") {
-            return playerRPS;
-    }
-    else {
-        let chooseAgain = getPlayerSelection()
-        return chooseAgain;
-    }
+let rockButton = document.querySelector(".rockButton");
+let paperButton = document.querySelector(".paperButton");
+let scissorsButton = document.querySelector(".scissorsButton");
 
-     // How the code works with a switch statement //
-    /*
-   switch(playerRPS) {
-        case "rock":
-        case "paper":
-        case "scissors":
-            return playerRPS;
-            break;
-        default:
-            let chooseAgain = getPlayerSelection();
-            return chooseAgain;
-    }
-    */
-    }
+function playRock() {
+    let playerSelection = "rock";
+    let computerSelection = getComputerSelection();
+    playRound(playerSelection, computerSelection);
+}
+
+function playPaper() {
+    let playerSelection = "paper";
+    let computerSelection = getComputerSelection();
+    playRound(playerSelection, computerSelection);
+}
+
+function playScissors() {
+    let playerSelection = "scissors";
+    let computerSelection = getComputerSelection();
+    playRound(playerSelection, computerSelection);
+}
+
+rockButton.addEventListener("click", playRock);
+paperButton.addEventListener("click", playPaper);
+scissorsButton.addEventListener("click", playScissors);
 
 function getComputerSelection() {
     const RPS = ["rock", "paper", "scissors"];
@@ -34,57 +31,46 @@ function getComputerSelection() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    console.log(playerSelection);
-    console.log(computerSelection);
+    let choiceDisplay = document.querySelector(".choice-display");
+    let playerScore = document.querySelector(".player-score-counter");
+    let playerScoreCounter = Number(playerScore.textContent);
+    let computerScore = document.querySelector(".computer-score-counter");
+    let computerScoreCounter = Number(computerScore.textContent);
+    let winLoseDisplay = document.querySelector(".win-lose-display");
     if (playerSelection == computerSelection) {
         let tie = `${playerSelection} and ${computerSelection} are the same - TIE`;
-        console.log(tie);
-        return tie;
+        choiceDisplay.textContent = tie;
+        winLoseDisplay.textContent = "TIE";
     }
     else if (playerSelection == "rock" && computerSelection == "scissors" ||
              playerSelection == "paper" && computerSelection == "rock" ||
              playerSelection == "scissors" && computerSelection == "paper") {
                 let playerWin = `${playerSelection} beats ${computerSelection} - WIN`;
-                console.log(playerWin);
-                return playerWin;
+                choiceDisplay.textContent = playerWin;
+                winLoseDisplay.textContent = "WIN";
+                playerScoreCounter++;
+                playerScore.textContent = playerScoreCounter;     
     }
     else {
         let playerLose = `${computerSelection} beats ${playerSelection} - LOSE`;
-        console.log(playerLose);
-        return playerLose;
+        choiceDisplay.textContent = playerLose;
+        winLoseDisplay.textContent = "LOSE";
+        computerScoreCounter++;
+        computerScore.textContent = computerScoreCounter;
+    }
+    let roundCounter = Number(document.querySelector(".round-counter").textContent);
+    roundCounter++;
+    document.querySelector(".round-counter").textContent = roundCounter;
+    if (playerScoreCounter == 5) {
+        choiceDisplay.textContent = "YOU WIN";
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
+    }
+    else if (computerScoreCounter == 5) {
+        choiceDisplay.textContent = "YOU LOSE";
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
     }
 }
-
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let gameCount = 0;
-    while (gameCount < 5) {
-        gameCount++;
-        console.log(gameCount);
-        let playerSelection = getPlayerSelection();
-        let computerSelection = getComputerSelection();
-        let result = playRound(playerSelection, computerSelection);
-        let winCheck = result.includes("WIN");
-        let tieCheck = result.includes("TIE");
-        if (winCheck == true) {
-            playerScore++;
-        }
-        else if (winCheck == false && tieCheck == false) {
-            computerScore++;
-        }
-        console.log(`Player - ${playerScore}, Computer - ${computerScore}`);
-        }
-    if (playerScore > computerScore) {
-        console.log("YOU WIN");
-    }
-    else if (playerScore < computerScore) {
-        console.log("YOU LOSE");
-    }
-    else {
-        console.log("TIE");
-    }
-}
-
-let playGame = game();
-console.log(playGame);
