@@ -19,12 +19,15 @@ body {
 .choice-display, .win-lose-display {
     display: flex;
     justify-content: center;
-    font-size: 50px;
+    font-size: 25px;
     padding-top: 50px;
+    max-width: 100%;
 }
 
 .player-computer-score {
-    padding: 50px;
+    margin-top: 120px;
+    display: flex;
+    gap: 40px;
 }
 
 .player-score, .computer-score {
@@ -43,23 +46,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
     padding: 50px;
 }
 
-.button {
+.rockButton, .paperButton, .scissorsButton {
     width: 150px;
     height: 150px;
     font-size: 30px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 900;
+    border: 2px solid black;
+    background: white;
 }
 
-.rps-buttons,
-.player-computer-score,
-.round-display,
-.player-score, 
-.computer-score {
-    order: solid 1px hotpink;
+button:hover {
+    background: #eeeeee;
+}
+
+button:active {
+    background: #aaaaaa;
 }
 
 .rps-buttons {
@@ -67,5 +73,6 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
+    gap: 10px;
 }
 
